@@ -175,40 +175,28 @@ class PilihBangkuView extends GetView<PilihBangkuController> {
                         ),
                         Expanded(
                             child: Container(
-                                child: GridView.count(
+                                child: Obx(() => GridView.count(
                                     padding: EdgeInsets.all(10),
                                     mainAxisSpacing: 10,
                                     crossAxisSpacing: 10,
                                     crossAxisCount: 5,
-                                    // children: List.generate(
-                                    //     75,
-                                    //     (index) => Container(
-                                    //           width: 50,
-                                    //           height: 50,
-                                    //           decoration: BoxDecoration(
-                                    //               color: Colors.white,
-                                    //               border: Border.all(
-                                    //                   color: Colors.black54),
-                                    //               borderRadius:
-                                    //                   BorderRadius.circular(10)),
-                                    //         ))),
                                     children: controller
                                         .gerbong[controller.indexGerbong.value]
                                         .map((data) => Container(
                                               width: 50,
                                               height: 50,
-                                              child: Text(data["status"]),
                                               decoration: BoxDecoration(
                                                   border: Border.all(
                                                       color: Colors.black38),
-                                                  color: data["status"] == '1'
-                                                      ? Colors.blue
+                                                  color: data["status"] ==
+                                                          'available'
+                                                      ? Colors.white
                                                       : Colors.orange,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           10)),
                                             ))
-                                        .toList())))
+                                        .toList()))))
                       ]),
                     ),
                   )
